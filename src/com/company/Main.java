@@ -7,6 +7,6 @@ public class Main {
         s.setConsommation(5);
         s.setJauge(50);
         rouler(1000);*/
-        System.out.println("test");
+        System.out.println("re test");
     }
 }
