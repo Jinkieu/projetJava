@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Vehicule v1 = new Vehicule();
+        //Vehicule v1 = new Vehicule();
 
         v1.setConsommation(5);
         v1.setJauge(50);

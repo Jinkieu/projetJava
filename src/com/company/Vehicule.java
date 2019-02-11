@@ -2,10 +2,11 @@ package com.company;
 
 import java.util.Scanner;
 
-public class Vehicule extends Compteur {
+public class Vehicule {
     private static int registre=0;
     private final int numeroImmatriculation;
     private double jauge;
+    private Compteur compteur;
     private double consommation;
     final double capacite = 50.0;
     private static int i = 1;
@@ -51,10 +52,9 @@ public class Vehicule extends Compteur {
         jauge = choix;
 
         return jauge;
-
-    public void fairePlein() {
-        jauge = capacite;
     }
+
+
     public double rouler(double distance)
     {
         double tmp = ((consommation*distance)/100); // en litre
@@ -67,7 +67,7 @@ public class Vehicule extends Compteur {
             {
                 jauge -= tmp;
                 tmp = 0;
-                add((tmp*100)/consommation);
+                compteur.add((tmp*100)/consommation);
             }
             if (tmp == jauge)
             {
@@ -78,7 +78,7 @@ public class Vehicule extends Compteur {
             else if (tmp > jauge)
             {
                 tmp -= jauge;
-                add((jauge*100)/consommation);
+                compteur.add((jauge*100)/consommation);
                 fairePlein();
             }
 
@@ -101,7 +101,7 @@ public class Vehicule extends Compteur {
     }
 
 
-    public String toString() {
-        return "Vehicule" +numeroImmatriculation+" [ totalisateur ="+totalisateur+" | Partiel = "+partiel+"]"+";; jauge = "+jauge;
+    public String toString(){
+        return "Véhicule" +numeroImmatriculation+ ": " + compteur.toString() + " jauge = " + jauge;
     }
 }

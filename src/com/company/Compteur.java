@@ -32,6 +32,9 @@ public class Compteur {
     public void add(double i) {
         totalisateur += i;
         partiel += i;
+        if(partiel>=cst){
+            partiel%=cst;
+        }
     }
 
     public String toString() {
