@@ -1,8 +1,10 @@
 package com.company;
 
 
+
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.TreeSet;
 
 public class Garage implements Iterable<Vehicule>{
     private ArrayList<Vehicule> listGarage = new ArrayList<Vehicule>();
@@ -29,6 +31,15 @@ public class Garage implements Iterable<Vehicule>{
     public void sortImmatriculation() {
 
     }
+
+    /**
+     * treeSet initialisation
+     */
+
+     public static TreeSet getSort(ArrayList list) {
+         TreeSet set = new TreeSet(list);
+         return set;
+     }
 
     public String toString(){
         String str = new String();
