@@ -21,4 +21,14 @@ public class Garage{
     public void addVehicule(Vehicule v1) {
         listGarage.add(v1);
     }
+
+    public String toString(){
+        String str = new String();
+        for(Vehicule a : listGarage)
+        {
+             str += a.toString();
+             str+= "\n";
+        }
+        return str;
+    }
 }
