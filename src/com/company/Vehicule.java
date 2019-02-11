@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Scanner;
+
 public class Vehicule extends Compteur {
     private static int registre=0;
     private final int numeroImmatriculation;
@@ -40,28 +42,52 @@ public class Vehicule extends Compteur {
     public void mettreEssence(double x) {
         jauge += x;
     }
+    public double fairePlein() {
+
+        Scanner kb = new Scanner(System.in);
+
+        System.out.println("Combien de litres voulez vous mettre (50.0 max)?");
+        double choix = kb.nextDouble(); // input user
+        jauge = choix;
+
+        return jauge;
 
     public void fairePlein() {
         jauge = capacite;
     }
+    public double rouler(double distance)
+    {
+        double tmp = ((consommation*distance)/100); // en litre
 
-    public void rouler(double distance) {
-       double tmp = (distance*consommation)/100;
-       while(tmp != 0) {
-           if(tmp<=jauge)
-           {
-               jauge -= tmp;
-               if(jauge == 0) fairePlein();
-               add((tmp*100)/consommation);
-               tmp = 0;
-           }
-           else if(tmp>jauge)
-           {
-               tmp -=jauge;
-               add((jauge*100)/consommation);
-               fairePlein();
-           }
-       }
+        System.out.println(tmp);
+
+        while (tmp!=0)
+        {
+            if ( tmp < jauge)
+            {
+                jauge -= tmp;
+                tmp = 0;
+                add((tmp*100)/consommation);
+            }
+            if (tmp == jauge)
+            {
+                jauge = 0;
+                tmp = 0;
+                fairePlein();
+            }
+            else if (tmp > jauge)
+            {
+                tmp -= jauge;
+                add((jauge*100)/consommation);
+                fairePlein();
+            }
+
+
+
+
+        }
+
+        return jauge;
     }
 
     public boolean compareTo(Vehicule v){
@@ -73,6 +99,7 @@ public class Vehicule extends Compteur {
             return false;
         }
     }
+
 
     public String toString() {
         return "Vehicule" +numeroImmatriculation+" [ totalisateur ="+totalisateur+" | Partiel = "+partiel+"]"+";; jauge = "+jauge;
