@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Iterator;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -15,6 +17,7 @@ public class Main {
         Garage test = new Garage();
         Vehicule v1 = new Vehicule();
         Vehicule v2 = new Vehicule();
+        Iterator i = test.iterator();
         v1.setJauge(50.0);
         v2.setJauge(10);
         test.addVehicule(v1);
@@ -23,7 +26,10 @@ public class Main {
         {
             System.out.println(test.listGarage);
         }*/
-       System.out.println(test.toString());
+       //System.out.println(test.toString());
+        for(Vehicule a : test) {
+
+        }
 
     }
 }

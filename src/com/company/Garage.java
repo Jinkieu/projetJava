@@ -2,8 +2,9 @@ package com.company;
 
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class Garage{
+public class Garage implements Iterable<Vehicule>{
     ArrayList<Vehicule> listGarage = new ArrayList<Vehicule>();
 
     public ArrayList getListGarage() {
@@ -20,6 +21,13 @@ public class Garage{
 
     public void addVehicule(Vehicule v1) {
         listGarage.add(v1);
+    }
+    public Iterator<Vehicule> iterator(){
+        return listGarage.iterator();
+    }
+
+    public void sortImmatriculation() {
+
     }
 
     public String toString(){
