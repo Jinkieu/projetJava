@@ -28,7 +28,7 @@ public class Main {
         }*/
        //System.out.println(test.toString());
         for(Vehicule a : test) {
-
+            System.out.println(a.toString());
         }
 
     }

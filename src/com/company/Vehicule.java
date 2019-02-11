@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.Scanner;
 
-public class Vehicule {
+public class Vehicule implements Comparable<Vehicule> {
     private static int registre=0;
     private final int numeroImmatriculation;
     private double jauge;
@@ -96,14 +96,9 @@ public class Vehicule {
         return jauge;
     }
 
-    public boolean compareTo(Vehicule v){
-        if(this.numeroImmatriculation == v.get_immatriculation()){
-            System.out.println("C'est le meme vehicule!");
-            return true;
-        } else{
-            System.out.println("Ce sont des vehicules differents!");
-            return false;
-        }
+    @Override
+    public int compareTo(Vehicule otherVehicule){
+        return(this.get_immatriculation() - otherVehicule.get_immatriculation());
     }
 
     public String toString(){
