@@ -12,13 +12,13 @@ public class Main {
         v1.rouler(1100.0);
         System.out.println(v1.getJauge());
         System.out.println("a");*/
-        /*Garage test = new Garage();
+        Garage test = new Garage();
         Vehicule v1 = new Vehicule();
         test.addVehicule(v1);
         for(int index=0;index<test.listGarage.size();index++)
         {
             System.out.println(test.listGarage);
-        }*/
-        System.out.println("test");
+        }
+
     }
 }

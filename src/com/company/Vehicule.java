@@ -98,15 +98,15 @@ public class Vehicule {
 
     public boolean compareTo(Vehicule v){
         if(this.numeroImmatriculation == v.get_immatriculation()){
-            System.out.println("C'est le même véhicule!");
+            System.out.println("C'est le meme vehicule!");
             return true;
         } else{
-            System.out.println("Ce sont des véhicules différents!");
+            System.out.println("Ce sont des vehicules differents!");
             return false;
         }
     }
 
     public String toString(){
-        return "Véhicule" +numeroImmatriculation+ ": " + compteur.toString() + " jauge = " + jauge;
+        return "Vehicule" +numeroImmatriculation+ ": " + compteur.toString() + " jauge = " + jauge;
     }
 }
