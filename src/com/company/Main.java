@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.Collections;
 import java.util.Iterator;
 
 public class Main {
@@ -19,6 +20,8 @@ public class Main {
         Vehicule v2 = new Vehicule();
         Iterator i = test.iterator();
         v1.setJauge(50.0);
+        v1.compteur.setTotalisateur(150);
+        v2.compteur.setTotalisateur(100);
         v2.setJauge(10);
         test.addVehicule(v1);
         test.addVehicule(v2);
@@ -27,9 +30,14 @@ public class Main {
             System.out.println(test.listGarage);
         }*/
        //System.out.println(test.toString());
-        for(Vehicule a : test) {
+        /*for(Vehicule a : test) {
             System.out.println(a.toString());
-        }
+        }*/
+        System.out.println("Avant le sort\n"+test.toString());
+        Collections.sort(test.getListGarage());
+        System.out.println("Apres le sort\n"+test.toString());
+        Collections.sort(test.getListGarage(),Vehicule.distanceComparator);
+        System.out.println("Apres le sort\n"+test.toString());
 
     }
 }

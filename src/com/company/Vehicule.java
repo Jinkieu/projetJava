@@ -1,12 +1,13 @@
 package com.company;
 
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class Vehicule implements Comparable<Vehicule> {
     private static int registre=0;
     private final int numeroImmatriculation;
     private double jauge;
-    private Compteur compteur;
+    protected Compteur compteur;
     private double consommation;
     final double capacite = 50.0;
     private static int i = 1;
@@ -98,10 +99,26 @@ public class Vehicule implements Comparable<Vehicule> {
 
     @Override
     public int compareTo(Vehicule otherVehicule){
+        // Trier les voitures selon leur plaques d'immatriculation
         return(this.get_immatriculation() - otherVehicule.get_immatriculation());
     }
 
+    @Override
     public String toString(){
         return "Vehicule" +numeroImmatriculation+ ": " + compteur.toString() + " jauge = " + jauge;
     }
+
+    /**
+     * Comparator pour trier les voitures par compteur kilometrique
+     */
+    ///Comparator permet de trier selon differents/plusieurs criteres
+    public static Comparator<Vehicule> distanceComparator = new Comparator<Vehicule>() {
+        @Override
+         public int compare(Vehicule v1, Vehicule v2) {
+             double result = v1.compteur.getTotalisateur() - v2.compteur.getTotalisateur();
+             if(result < 0) return -1;
+             if(result > 0) return 1;
+             return 0;
+         }
+    };
 }

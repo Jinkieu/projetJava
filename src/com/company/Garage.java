@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Garage implements Iterable<Vehicule>{
-    ArrayList<Vehicule> listGarage = new ArrayList<Vehicule>();
+    private ArrayList<Vehicule> listGarage = new ArrayList<Vehicule>();
 
     public ArrayList getListGarage() {
         return listGarage;
