@@ -1,15 +1,24 @@
 package com.company;
 
 public class Vehicule extends Compteur {
-    private int numeroImmatriculation;
+    private static int registre=0;
+    private final int numeroImmatriculation;
     private double jauge;
     private double consommation;
     final double capacite = 50.0;
     private static int i = 1;
 
-    public Vehicule() {
-        super();
-        this.numeroImmatriculation = i++;
+    public Vehicule(int consommationVehicule) {
+        numeroImmatriculation=registre;
+        registre++;
+        consommation=consommationVehicule;
+        //compteur=new Compteur();
+        //super();
+        //this.numeroImmatriculation = i++;
+    }
+
+    public int get_immatriculation(){
+        return numeroImmatriculation;
     }
 
     public double getJauge() {
@@ -27,12 +36,15 @@ public class Vehicule extends Compteur {
     public void setConsommation(double consommation) {
         this.consommation = consommation;
     }
+
     public void mettreEssence(double x) {
         jauge += x;
     }
+
     public void fairePlein() {
         jauge = capacite;
     }
+
     public void rouler(double distance) {
        double tmp = (distance*consommation)/100;
        while(tmp != 0) {
@@ -51,6 +63,17 @@ public class Vehicule extends Compteur {
            }
        }
     }
+
+    public boolean compareTo(Vehicule v){
+        if(this.numeroImmatriculation == v.get_immatriculation()){
+            System.out.println("C'est le même véhicule!");
+            return true;
+        } else{
+            System.out.println("Ce sont des véhicules différents!");
+            return false;
+        }
+    }
+
     public String toString() {
         return "Vehicule" +numeroImmatriculation+" [ totalisateur ="+totalisateur+" | Partiel = "+partiel+"]"+";; jauge = "+jauge;
     }
