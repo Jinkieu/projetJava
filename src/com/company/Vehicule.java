@@ -11,13 +11,18 @@ public class Vehicule {
     final double capacite = 50.0;
     private static int i = 1;
 
+    public Vehicule() {
+        numeroImmatriculation=registre;
+        registre++;
+        consommation=100;
+        compteur= new Compteur();
+    }
+
     public Vehicule(int consommationVehicule) {
         numeroImmatriculation=registre;
         registre++;
         consommation=consommationVehicule;
-        //compteur=new Compteur();
-        //super();
-        //this.numeroImmatriculation = i++;
+        compteur= new Compteur();
     }
 
     public int get_immatriculation(){
@@ -40,13 +45,20 @@ public class Vehicule {
         this.consommation = consommation;
     }
 
-    public void mettreEssence(double x) {
-        jauge += x;
+    public double mettreDeLessence(double quantité) {           //To be optimized and use exceptions
+        double reste = 0;
+
+        if (jauge+quantité > capacite) {
+            reste = (quantité + jauge) - capacite;
+            fairePlein();
+        } else{
+            jauge += quantité;
+        }
+        return reste;
     }
+
     public double fairePlein() {
-
         Scanner kb = new Scanner(System.in);
-
         System.out.println("Combien de litres voulez vous mettre (50.0 max)?");
         double choix = kb.nextDouble(); // input user
         jauge = choix;
@@ -58,9 +70,7 @@ public class Vehicule {
     public double rouler(double distance)
     {
         double tmp = ((consommation*distance)/100); // en litre
-
         System.out.println(tmp);
-
         while (tmp!=0)
         {
             if ( tmp < jauge)
@@ -81,12 +91,7 @@ public class Vehicule {
                 compteur.add((jauge*100)/consommation);
                 fairePlein();
             }
-
-
-
-
         }
-
         return jauge;
     }
 
