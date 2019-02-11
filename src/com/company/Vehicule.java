@@ -45,14 +45,14 @@ public class Vehicule {
         this.consommation = consommation;
     }
 
-    public double mettreDeLessence(double quantité) {           //To be optimized and use exceptions
+    public double mettreDeLessence(double quantite) {           //To be optimized and use exceptions
         double reste = 0;
 
-        if (jauge+quantité > capacite) {
-            reste = (quantité + jauge) - capacite;
+        if (jauge+quantite > capacite) {
+            reste = (quantite + jauge) - capacite;
             fairePlein();
         } else{
-            jauge += quantité;
+            jauge += quantite;
         }
         return reste;
     }
