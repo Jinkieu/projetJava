@@ -57,13 +57,14 @@ public class Vehicule {
         return reste;
     }
 
-    public double fairePlein() {
+    public void fairePlein() {
+        jauge = capacite;
+        /*
         Scanner kb = new Scanner(System.in);
         System.out.println("Combien de litres voulez vous mettre (50.0 max)?");
         double choix = kb.nextDouble(); // input user
         jauge = choix;
-
-        return jauge;
+        return jauge;*/
     }
 
 
@@ -104,7 +105,6 @@ public class Vehicule {
             return false;
         }
     }
-
 
     public String toString(){
         return "Véhicule" +numeroImmatriculation+ ": " + compteur.toString() + " jauge = " + jauge;
