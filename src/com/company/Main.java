@@ -69,7 +69,5 @@ public class Main {
             System.out.println(itr.next());
         }
 
-        System.out.println("theo le phoque");
-
     }
 }
