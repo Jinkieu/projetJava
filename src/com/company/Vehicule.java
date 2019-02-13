@@ -30,6 +30,10 @@ public class Vehicule implements Comparable<Vehicule> {
         return numeroImmatriculation;
     }
 
+    public Compteur getCompteur(){
+        return compteur;
+    }
+
     public double getJauge() {
         return jauge;
     }

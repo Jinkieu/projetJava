@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.TreeSet;
 
 public class Garage implements Iterable<Vehicule>{
+
     private ArrayList<Vehicule> listGarage = new ArrayList<Vehicule>();
 
     public ArrayList getListGarage() {
@@ -24,6 +25,7 @@ public class Garage implements Iterable<Vehicule>{
     public void addVehicule(Vehicule v1) {
         listGarage.add(v1);
     }
+
     public Iterator<Vehicule> iterator(){
         return listGarage.iterator();
     }
@@ -49,5 +51,6 @@ public class Garage implements Iterable<Vehicule>{
              str+= "\n";
         }
         return str;
+
     }
 }
