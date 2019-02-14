@@ -21,6 +21,7 @@ public class Main {
         Vehicule v2 = new Vehicule();
         Vehicule v3 = new Vehicule();
         Vehicule v4 = new Vehicule();
+        Vehicule v5 = new Vehicule();
         Iterator i = test.iterator(); //sait pas a quoi ca sert
         v1.setJauge(50.0);
         v1.compteur.setTotalisateur(150);
@@ -34,14 +35,14 @@ public class Main {
         test.addVehicule(v3);
         test.addVehicule(v2);
         test.addVehicule(v4);
-
         /**
          * treeSet
          */
         TreeSet set = Garage.getSort(test.getListGarage());
         Iterator itr = set.iterator();
 
-
+        TreeSet setTot = Garage.getSortTot(test.getListGarage());
+        Iterator itrTot = setTot.iterator();
        /* for(int index=0;index<test.listGarage.size();index++)
         {
             System.out.println(test.listGarage);
@@ -56,17 +57,16 @@ public class Main {
         Collections.sort(test.getListGarage(),Vehicule.distanceComparator);
         System.out.println("Apres le sort Comparator\n"+test.toString());
 
-        System.out.println("TreeSet basique :\n");
+        System.out.println("TreeSet selon plaque d'immatriculation :\n");
         while(itr.hasNext())
         {
             System.out.println(itr.next());
         }
 
-        itr = set.iterator();
-        System.out.println("TreeSet basique :\n");
-        while(itr.hasNext())
+        System.out.println("TreeSet selon totalisateur :\n");
+        while(itrTot.hasNext())
         {
-            System.out.println(itr.next());
+            System.out.println(itrTot.next());
         }
 
     }
