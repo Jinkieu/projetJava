@@ -9,7 +9,12 @@ import java.util.*;
 
 
 public class Garage implements Iterable<Vehicule>{
-    private ArrayList<Vehicule> listGarage = new ArrayList<Vehicule>();
+
+    private ArrayList<Vehicule> listGarage;
+
+    public Garage() {
+        listGarage = new ArrayList<Vehicule>();
+    }
 
     public ArrayList getListGarage() {
         return listGarage;
@@ -19,13 +24,10 @@ public class Garage implements Iterable<Vehicule>{
         this.listGarage = listGarage;
     }
 
-    public Garage() {
-
-    }
-
     public void addVehicule(Vehicule v1) {
         listGarage.add(v1);
     }
+
     public Iterator<Vehicule> iterator(){
         return listGarage.iterator();
     }
@@ -81,8 +83,7 @@ public class Garage implements Iterable<Vehicule>{
         String str = new String();
         for(Vehicule a : listGarage)
         {
-             str += a.toString();
-             str+= "\n";
+             str += a.toString() + "\n";
         }
         return str;
     }
