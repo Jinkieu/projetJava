@@ -8,7 +8,7 @@ public class Vehicule implements Comparable<Vehicule> {
     private final int numeroImmatriculation;
     private double jauge;
     protected Compteur compteur;
-    private double consommation;
+    private double consommation;    //Consommation du vehicule en km par litre
     final double capacite = 50.0;
     private static int i = 1;
 
@@ -17,6 +17,7 @@ public class Vehicule implements Comparable<Vehicule> {
         registre++;
         consommation=100;
         compteur= new Compteur();
+        fairePlein();
     }
 
     public Vehicule(int consommationVehicule) {
@@ -24,6 +25,15 @@ public class Vehicule implements Comparable<Vehicule> {
         registre++;
         consommation=consommationVehicule;
         compteur= new Compteur();
+        fairePlein();
+    }
+
+    public Vehicule(int consommationVehicule, double niveauJauge) {
+        numeroImmatriculation=registre;
+        registre++;
+        consommation=consommationVehicule;
+        compteur = new Compteur();
+        jauge = niveauJauge;
     }
 
     public int get_immatriculation(){
@@ -50,14 +60,20 @@ public class Vehicule implements Comparable<Vehicule> {
         this.consommation = consommation;
     }
 
-    public double mettreDeLessence(double quantite) {           //To be optimized and use exceptions
+    /*
+     * Même résultats mais avec les exceptions
+     * Besoin de tests
+     */
+    public double mettreDeLessence(double quantite) {
         double reste = 0;
-
-        if (jauge+quantite > capacite) {
-            reste = (quantite + jauge) - capacite;
-            fairePlein();
-        } else{
+        try {
             jauge += quantite;
+            if (jauge > capacite) {
+                reste = jauge - capacite;
+                throw new ExceptionEssence("Votre réservoir a une capacité insuffisante pour mettre " + reste + " essence.");
+            }
+        } catch (ExceptionEssence Es) {
+            fairePlein();
         }
         return reste;
     }

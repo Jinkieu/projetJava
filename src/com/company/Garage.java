@@ -8,7 +8,12 @@ import java.util.TreeSet;
 
 public class Garage implements Iterable<Vehicule>{
 
-    private ArrayList<Vehicule> listGarage = new ArrayList<Vehicule>();
+    private ArrayList<Vehicule> listGarage;
+
+
+    public Garage() {
+        listGarage = new ArrayList<Vehicule>();
+    }
 
     public ArrayList getListGarage() {
         return listGarage;
@@ -16,10 +21,6 @@ public class Garage implements Iterable<Vehicule>{
 
     public void setListGarage(ArrayList listGarage) {
         this.listGarage = listGarage;
-    }
-
-    public Garage() {
-
     }
 
     public void addVehicule(Vehicule v1) {
@@ -47,10 +48,8 @@ public class Garage implements Iterable<Vehicule>{
         String str = new String();
         for(Vehicule a : listGarage)
         {
-             str += a.toString();
-             str+= "\n";
+             str += a.toString() + "\n";
         }
         return str;
-
     }
 }
