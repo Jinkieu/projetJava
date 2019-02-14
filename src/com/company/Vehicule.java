@@ -64,29 +64,20 @@ public class Vehicule implements Comparable<Vehicule> {
      * Même résultats mais avec les exceptions
      * Besoin de tests
      */
-    public double mettreDeLessence(double quantite) {
+    public double mettreDeLessence(double quantite) throws ExceptionEssence {
         double reste = 0;
-        try {
-            jauge += quantite;
-            if (jauge > capacite) {
-                throw new ExceptionEssence();
-            }
-        } catch (ExceptionEssence Es) {
+        jauge += quantite;
+        if (jauge > capacite) {
             reste = jauge - capacite;
             fairePlein();
             System.out.println("Votre reservoir a une capacite insuffisante pour mettre " + reste + " essence.");
+            throw new ExceptionEssence();
         }
         return reste;
     }
 
     public void fairePlein() {
         jauge = capacite;
-        /*
-        Scanner kb = new Scanner(System.in);
-        System.out.println("Combien de litres voulez vous mettre (50.0 max)?");
-        double choix = kb.nextDouble(); // input user
-        jauge = choix;
-        return jauge;*/
     }
 
 
