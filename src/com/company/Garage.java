@@ -10,7 +10,6 @@ public class Garage implements Iterable<Vehicule>{
 
     private ArrayList<Vehicule> listGarage;
 
-
     public Garage() {
         listGarage = new ArrayList<Vehicule>();
     }

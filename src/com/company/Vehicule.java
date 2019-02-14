@@ -69,11 +69,12 @@ public class Vehicule implements Comparable<Vehicule> {
         try {
             jauge += quantite;
             if (jauge > capacite) {
-                reste = jauge - capacite;
-                throw new ExceptionEssence("Votre réservoir a une capacité insuffisante pour mettre " + reste + " essence.");
+                throw new ExceptionEssence();
             }
         } catch (ExceptionEssence Es) {
+            reste = jauge - capacite;
             fairePlein();
+            System.out.println("Votre reservoir a une capacite insuffisante pour mettre " + reste + " essence.");
         }
         return reste;
     }
