@@ -53,49 +53,61 @@ public class Garage implements Iterable<Vehicule>{
     public Iterator<Vehicule> iterator(){
         return listGarage.iterator();
     }
-
     public void sortImmatriculation() {
-
     }
-
     /**
      *  Methode qui permet de mettre la jauge de tous les vehicules du garage au maximum en utilisant la methode de la
      *  classe Vehicule faireLePlein()
      */
-
     public void faireLePleinAll () {
-
         for(Vehicule a : listGarage)
         {
             a.faireLePlein();
         }
-
     }
-
     /**
      *  Methode qui permet réinitialiser  tous les compteurs des vehicules du garage  en utilisant la methode de la
      *  classe Compteur resetPartiel()
      */
-
     public void resetPartielAll() {
-
         for(Vehicule a : listGarage)
         {
             a.compteur.resetPartiel();
         }
-
     }
-
-
-
     /**
      * treeSet initialisation
      */
 
 
+    private static final TreeSet<Vehicule> sortTotalisateur = new TreeSet<Vehicule>() {
+
+        public int CompteurComparator(Vehicule o1, Vehicule o2) {
+
+            if (o1.equals(o2)) {
+
+                return 0;
+
+            }
+
+            if (o1.compteur.getTotalisateur() >= o2.compteur.getTotalisateur()) {
+
+                return 1;
+
+            }
+
+            return -1;
+
+        }
+
+    };
 
 
 
+    public static TreeSet triNoImmatriculion2(ArrayList list) {
+        TreeSet set = new TreeSet(list);
+        return set;
+    }
 
     public  TreeSet triNoImmatriculion2() {
          TreeSet set = new TreeSet(listGarage);
@@ -103,13 +115,18 @@ public class Garage implements Iterable<Vehicule>{
          return garageTreeSet;
      }
 
-     public  TreeSet triCompteur2(){
+    public static TreeSet getSortTot(ArrayList list) {
+        TreeSet ts = new TreeSet<>(sortTotalisateur);
+        ts.addAll(list);
+        return ts;
+    }
+
+    public  TreeSet triCompteur2(){
         TreeSet ts = new TreeSet<>(Vehicule.distanceComparator);
         ts.addAll(listGarage);
         garageTreeSet = ts;
         return garageTreeSet;
-     }
-
+    }
 
 
     public ArrayList triCompteur()
@@ -117,18 +134,16 @@ public class Garage implements Iterable<Vehicule>{
         Collections.sort(listGarage,Vehicule.distanceComparator);
         return listGarage;
     }
-
     public ArrayList triNoImmatriculion()
     {
         Collections.sort(listGarage);
         return listGarage;
     }
-
     public String toString(){
         String str = new String();
         for(Vehicule a : listGarage)
         {
-             str += a.toString() + "\n";
+            str += a.toString() + "\n";
         }
         return str;
     }
@@ -141,4 +156,3 @@ public class Garage implements Iterable<Vehicule>{
         return str;
     }
 }
-
