@@ -3,6 +3,10 @@ package com.company;
 import java.util.Comparator;
 import java.util.Scanner;
 
+/**
+ *  Classe Vehicule
+ */
+
 public class Vehicule implements Comparable<Vehicule> {
     private static int registre=0;
     private final int numeroImmatriculation;
@@ -12,23 +16,34 @@ public class Vehicule implements Comparable<Vehicule> {
     final double capacite = 50.0;
     private static int i = 1;
 
+    /**
+     *  Constructeur véhicule
+     */
     public Vehicule() {
         numeroImmatriculation=registre;
         registre++;
         consommation=100;
         compteur= new Compteur();
-        fairePlein();
+        faireLePlein();
     }
 
-    public Vehicule(int consommationVehicule) {
+    /**
+     *  Constructeur véhicule
+     */
+
+    public Vehicule(double consommationVehicule) {
         numeroImmatriculation=registre;
         registre++;
         consommation=consommationVehicule;
         compteur= new Compteur();
-        fairePlein();
+        faireLePlein();
     }
 
-    public Vehicule(int consommationVehicule, double niveauJauge) {
+    /**
+     *  Constructeur véhicule
+     */
+
+    public Vehicule(double consommationVehicule, double niveauJauge) {
         numeroImmatriculation=registre;
         registre++;
         consommation=consommationVehicule;
@@ -36,49 +51,95 @@ public class Vehicule implements Comparable<Vehicule> {
         jauge = niveauJauge;
     }
 
-    public int get_immatriculation(){
+    /**
+     * Getter
+     * @return numeroImmatriculation
+     *      Le numero d'immatriculation
+     */
+
+    public int getNoImmatriculation(){
         return numeroImmatriculation;
     }
+
+    /**
+     *  Fonction qui renvoie le compteur
+     * @return compteur
+     *
+     */
 
     public Compteur getCompteur(){
         return compteur;
     }
 
+
+    /**
+     *  Getter de la jauge
+     * @return jauge
+     */
+
     public double getJauge() {
         return jauge;
     }
+
+    /**
+     * Setter de la jauge
+     * @param jauge
+     */
 
     public void setJauge(double jauge) {
         this.jauge = jauge;
     }
 
+    /**
+     * Getter de la consommation du vehicule
+     * @return  consommation
+     */
+
     public double getConsommation() {
         return consommation;
     }
+
+    /**
+     * Setter de la consommation
+     * @param consommation
+     */
 
     public void setConsommation(double consommation) {
         this.consommation = consommation;
     }
 
-    /*
-     * Même résultats mais avec les exceptions
-     * Besoin de tests
+    /**
+     * Méthode qui permet de remplir la jauge d'essence
+     * @param quantite
+     * @return reste
+     * @throws ExceptionEssence
      */
+
     public double mettreDeLessence(double quantite) throws ExceptionEssence {
         double reste = 0;
         jauge += quantite;
         if (jauge > capacite) {
             reste = jauge - capacite;
-            fairePlein();
+            faireLePlein();
             System.out.println("Votre reservoir a une capacite insuffisante pour mettre " + reste + " essence.");
             throw new ExceptionEssence();
         }
         return reste;
     }
 
-    public void fairePlein() {
+    /**
+     * Methode qui remplit la jauge au maximum
+     */
+
+    public void faireLePlein() {
         jauge = capacite;
     }
+
+    /**
+     * Methode qui permet au vehicule de rouler, qui remplit le réservoir lorsque celui ci est vide et qui incrémente le compteur
+     * @param distance
+     * @return distance
+     */
 
 
     public double rouler(double distance)
@@ -91,28 +152,32 @@ public class Vehicule implements Comparable<Vehicule> {
             {
                 jauge -= tmp;
                 tmp = 0;
-                compteur.add((tmp*100)/consommation);
             }
             if (tmp == jauge)
             {
                 jauge = 0;
                 tmp = 0;
-                fairePlein();
+                faireLePlein();
             }
             else if (tmp > jauge)
             {
                 tmp -= jauge;
-                compteur.add((jauge*100)/consommation);
-                fairePlein();
+                faireLePlein();
             }
         }
-        return jauge;
+        compteur.add(distance);
+        return distance;
     }
+
+    /**
+     * Methode qui permet de trier les voitures selon leurs plaques d'immatriculation
+     * @param otherVehicule
+     * @return
+     */
 
     @Override
     public int compareTo(Vehicule otherVehicule){
-        // Trier les voitures selon leur plaques d'immatriculation
-        return(this.get_immatriculation() - otherVehicule.get_immatriculation());
+        return(this.getNoImmatriculation() - otherVehicule.getNoImmatriculation());
     }
 
     @Override
