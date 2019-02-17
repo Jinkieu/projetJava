@@ -93,7 +93,7 @@ public class Garage implements Iterable<Vehicule>{
      */
 
 
-    private static final TreeSet<Vehicule> sortTotalisateur = new TreeSet<Vehicule>(new Comparator<Vehicule>() {
+    private static final TreeSet<Vehicule> sortTotalisateur = new TreeSet<Vehicule>() {
 
         public int CompteurComparator(Vehicule o1, Vehicule o2) {
 
@@ -113,11 +113,11 @@ public class Garage implements Iterable<Vehicule>{
 
         }
 
-    });
+    };
 
 
 
-    public static TreeSet getSort(ArrayList list) {
+    public static TreeSet abc(ArrayList list) {
          TreeSet set = new TreeSet(list);
          return set;
      }
@@ -130,6 +130,17 @@ public class Garage implements Iterable<Vehicule>{
 
 
 
+    public ArrayList triCompteur()
+    {
+        Collections.sort(listGarage,Vehicule.distanceComparator);
+        return listGarage;
+    }
+
+    public ArrayList triNoImmatriculion()
+    {
+        Collections.sort(listGarage);
+        return listGarage;
+    }
 
     public String toString(){
         String str = new String();
