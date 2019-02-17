@@ -219,7 +219,7 @@ public class UtilisationVer1 {
 		}
 		System.out.println(garage);
 
-		//UtilisationVer1.tri2(garage);
+		UtilisationVer1.tri2(garage);
 	}
 
 
@@ -259,7 +259,7 @@ public class UtilisationVer1 {
 		}
 		System.out.println(garage);
 
-		//UtilisationVer1.tri2(garage);
+		UtilisationVer1.tri2(garage);
 	}
 
 
@@ -282,17 +282,17 @@ public class UtilisationVer1 {
 	private static void tri2(Garage garage) {
 		System.out.println("\n\n##Tri selon le no immatriculation ##");
 		garage.triNoImmatriculion2();
-		System.out.println(garage);
+		System.out.println(garage.toStringTreeSet());
 		garage.triNoImmatriculion2();
 
 		System.out.println("\n\n##Tri selon le compteur km totalisateur ##");
 		garage.triCompteur2();
-		System.out.println(garage);
+		System.out.println(garage.toStringTreeSet());
 		garage.triCompteur2();
 
 		System.out.println("\n\n##Tri selon le no immatriculation ##");
-		garage.triNoImmatriculion();
-		System.out.println(garage);
+		garage.triNoImmatriculion2();
+		System.out.println(garage.toStringTreeSet());
 	}
 }
 //test1cdzezed

@@ -12,7 +12,7 @@ import java.util.*;
 public class Garage implements Iterable<Vehicule>{
 
     private ArrayList<Vehicule> listGarage;
-
+    private TreeSet<Vehicule> garageTreeSet;
     /**
      * Constructeur de la classe
      */
@@ -93,39 +93,21 @@ public class Garage implements Iterable<Vehicule>{
      */
 
 
-    private static final TreeSet<Vehicule> sortTotalisateur = new TreeSet<Vehicule>() {
-
-        public int CompteurComparator(Vehicule o1, Vehicule o2) {
-
-            if (o1.equals(o2)) {
-
-                return 0;
-
-            }
-
-            if (o1.compteur.getTotalisateur() >= o2.compteur.getTotalisateur()) {
-
-                return 1;
-
-            }
-
-            return -1;
-
-        }
-
-    };
 
 
 
-    public static TreeSet triNoImmatriculion2(ArrayList list) {
-         TreeSet set = new TreeSet(list);
-         return set;
+
+    public  TreeSet triNoImmatriculion2() {
+         TreeSet set = new TreeSet(listGarage);
+         garageTreeSet = set;
+         return garageTreeSet;
      }
 
-     public static TreeSet getSortTot(ArrayList list){
-        TreeSet ts = new TreeSet<>(sortTotalisateur);
-        ts.addAll(list);
-        return ts;
+     public  TreeSet triCompteur2(){
+        TreeSet ts = new TreeSet<>(Vehicule.distanceComparator);
+        ts.addAll(listGarage);
+        garageTreeSet = ts;
+        return garageTreeSet;
      }
 
 
@@ -147,6 +129,14 @@ public class Garage implements Iterable<Vehicule>{
         for(Vehicule a : listGarage)
         {
              str += a.toString() + "\n";
+        }
+        return str;
+    }
+    public String toStringTreeSet(){
+        String str = new String();
+        for(Vehicule a : garageTreeSet)
+        {
+            str += a.toString() + "\n";
         }
         return str;
     }
