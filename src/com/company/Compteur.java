@@ -41,3 +41,4 @@ public class Compteur {
         return "Compteur = [ totalisateur ="+totalisateur+" | Partiel = "+partiel+"]";
     }
 }
+//test

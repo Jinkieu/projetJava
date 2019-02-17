@@ -117,7 +117,7 @@ public class Garage implements Iterable<Vehicule>{
 
 
 
-    public static TreeSet abc(ArrayList list) {
+    public static TreeSet triNoImmatriculion2(ArrayList list) {
          TreeSet set = new TreeSet(list);
          return set;
      }
