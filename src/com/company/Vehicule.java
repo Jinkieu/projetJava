@@ -24,7 +24,7 @@ public class Vehicule implements Comparable<Vehicule> {
         registre++;
         consommation=100;
         compteur= new Compteur();
-        faireLePlein();
+        jauge=0;
     }
 
     /**
@@ -36,7 +36,7 @@ public class Vehicule implements Comparable<Vehicule> {
         registre++;
         consommation=consommationVehicule;
         compteur= new Compteur();
-        faireLePlein();
+        jauge=0;
     }
 
     /**
@@ -112,17 +112,16 @@ public class Vehicule implements Comparable<Vehicule> {
      * Méthode qui permet de remplir la jauge d'essence
      * @param quantite
      * @return reste
-     * @throws ExceptionEssence
+     * @throws CapaciteDepasseeException
      */
 
-    public double mettreDeLessence(double quantite) throws ExceptionEssence {
+    public double mettreDeLessence(double quantite) throws CapaciteDepasseeException {
         double reste = 0;
         jauge += quantite;
         if (jauge > capacite) {
             reste = jauge - capacite;
             faireLePlein();
-            System.out.println("Votre reservoir a une capacite insuffisante pour mettre " + reste + " essence.");
-            throw new ExceptionEssence();
+            throw new CapaciteDepasseeException("Votre reservoir a une capacite insuffisante pour mettre " + reste + " essence.");
         }
         return reste;
     }
